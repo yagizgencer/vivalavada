@@ -157,7 +157,7 @@ It is a true sign of camaraderie when one can meet up with a friend, sip on some
 
 ## References
 
-[^1]: ["Volume of world beer production"](http://www.europeanbeerguide.net/eustats.htm#production)
+[^1]: [Volume of world beer production](http://www.europeanbeerguide.net/eustats.htm#production)
 [^2]: [How and why did craft breweries 'revolutionise' the beer market? The case of Poland](https://www.researchgate.net/publication/342563412_How_and_why_did_craft_breweries_'revolutionise'_the_beer_market_The_case_of_Poland)
 [^3]: [The Growth in Demand for Craft Beer and the Proliferation of Microbreweries in Slovenia](https://www.mdpi.com/2306-5710/9/4/86)
 [^4]: [Economic Growth, Globalisation, and Beer Consumption](https://www.researchgate.net/publication/281145522_Economic_Growth_Globalisation_and_Beer_Consumption)
