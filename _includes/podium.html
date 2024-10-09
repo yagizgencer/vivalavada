@@ -1,0 +1,30 @@
+<div class="podium">
+    <div class="position second">
+        <h2>2nd</h2>
+        <h3>Belgium & Netherlands</h3>
+    </div>
+    <div class="position first">
+        <h2>1st</h2>
+        <h3>England & Scotland</h3>
+    </div>
+    <div class="position third">
+        <h2>3rd</h2>
+        <h3>Finland & Norway</h3>
+    </div>
+</div>
+
+<script>
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                return;
+            }
+
+            entry.target.classList.remove('animate');
+        }, { threshold: 0.5 });
+    });
+
+    const positions = document.querySelectorAll('.position');
+    positions.forEach(position => observer.observe(position));
+</script>

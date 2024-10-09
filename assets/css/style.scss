@@ -1,0 +1,412 @@
+---
+---
+
+@import "{{ site.theme }}";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+#progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: rgba(182, 182, 182, 0.5);
+    z-index: 9999;
+
+    #progress-bar {
+        height: 100%;
+        width: 0;
+        background-color: #159957;
+        transition: width 0.4s ease-out;
+    }
+}
+
+.page-header {
+    height: 100vh;
+    height: 100dvh;
+    background: none;
+
+    #scene {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        overflow: hidden;
+
+        .background {
+            height: 110%;
+            width: 110%;
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            background-image: url("{{ '/assets/images/background-tile.png' | relative_url }}");
+            background-size: 550px;
+            background-repeat: repeat;
+            filter: blur(2.75px);
+            -webkit-filter: blur(2.75px);
+        }
+
+        .background::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(0, 0, 0, 0.8) 100%
+            );
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); } // Adjust the pixel value for more or less movement
+        }
+
+        @mixin beer-style(
+            $top,
+            $left,
+            $height: calc(1440px/7),
+            $width: calc(342px/7),
+            $blur-effect: 1px,
+            $brightness: 55%,
+            $contrast: 90%,
+            $animation-duration: 3s,
+            $animation-delay: 0s
+        ) {
+            background-size: 100%;
+            background-repeat: no-repeat;
+            height: $height;
+            width: $width;
+            position: absolute;
+            top: $top;
+            left: $left;
+            filter: brightness($brightness) contrast($contrast) blur($blur-effect);
+            -webkit-filter: brightness($brightness) contrast($contrast) blur($blur-effect);;
+            animation: float 3s ease-in-out infinite;
+            animation-duration: $animation-duration;
+            animation-delay: $animation-delay;
+        }
+
+        .bottle-1 {
+            @include beer-style(
+              $top: 20vh,
+              $left: 15vw,
+              $animation-duration: 3.5s,
+              $animation-delay: 1.5s,
+              $height: calc(1440px/5),
+              $width: calc(342px/5),
+              $contrast: 100%,
+              $brightness: 90%,
+              $blur-effect: .75px
+            );
+            background-image: url("{{ '/assets/images/bottle-1.png' | relative_url }}");
+        }
+
+        .bottle-2 {
+            @include beer-style($top: 80vh, $left: 65vw, $animation-duration: 3s, $animation-delay: 0.5s);
+            background-image: url("{{ '/assets/images/bottle-2.png' | relative_url }}");
+        }
+
+        .bottle-3 {
+            @include beer-style($top: 40vh, $left: 80vw, $animation-duration: 5s, $animation-delay: 1s);
+            background-image: url("{{ '/assets/images/bottle-3.png' | relative_url }}");
+        }
+
+        .bottle-4 {
+            @include beer-style(
+              $top: 10vh,
+              $left: 50vw,
+              $animation-duration: 4.5s,
+              $animation-delay: 0.75s,
+              $height: calc(1440px/6),
+              $width: calc(342px/6),
+              $contrast: 90%,
+              $brightness: 75%,
+              $blur-effect: .75px
+            );
+            background-image: url("{{ '/assets/images/bottle-4.png' | relative_url }}");
+        }
+
+        .bottle-5 {
+            @include beer-style(
+              $top: 60vh,
+              $left: 35vw,
+              $animation-duration: 3.5s,
+              $animation-delay: 0s,
+              $height: calc(1440px/6),
+              $width: calc(342px/6),
+              $contrast: 90%,
+              $brightness: 75%,
+              $blur-effect: .75px
+            );
+            background-image: url("{{ '/assets/images/bottle-5.png' | relative_url }}");
+        }
+
+        .glass-1 {
+            @include beer-style($top: 75vh, $left: 10vw, $animation-duration: 4s, $animation-delay: 1.25s);
+            background-image: url("{{ '/assets/images/glass-1.png' | relative_url }}");
+        }
+
+        .glass-2 {
+            @include beer-style(
+              $top: 10vh,
+              $left: 80vw,
+              $animation-duration: 3.5s,
+              $animation-delay: 0.5s,
+              $height: calc(304px/1.5),
+              $width: calc(115px/1.5),
+              $contrast: 100%,
+              $brightness: 100%,
+              $blur-effect: .75px
+            );
+            background-image: url("{{ '/assets/images/glass-2.png' | relative_url }}");
+        }
+
+        .glass-3 {
+            @include beer-style($top: 70vh, $left: 50vw, $animation-duration: 4.5s, $animation-delay: 1s);
+            background-image: url("{{ '/assets/images/glass-3.png' | relative_url }}");
+        }
+
+        .glass-4 {
+            @include beer-style($top: 20vh,$left: 30vw, $animation-duration: 3s, $animation-delay: 0.25s);
+            background-image: url("{{ '/assets/images/glass-4.png' | relative_url }}");
+        }
+
+        .glass-5 {
+            @include beer-style(
+              $top: 70vh,
+              $left: 60vw,
+              $animation-duration: 3.5s,
+              $animation-delay: 0.75s,
+              $height: calc(304px/1.5),
+              $width: calc(115px/1.5),
+              $contrast: 100%,
+              $brightness: 100%,
+              $blur-effect: .75px
+            );
+            background-image: url("{{ '/assets/images/glass-5.png' | relative_url }}");
+        }
+    }
+
+    .header-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+
+        & .glass {
+            max-width: 950px;
+            padding: 20px 50px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(7.7px);
+            -webkit-backdrop-filter: blur(7.7px);
+        }
+
+        & #discover-button {
+            background-color: rgba(39, 161, 97, 0.9);
+            color: #fff;
+
+            &:hover {
+                background-color: rgba(6, 147, 74, 0.4);
+            }
+        }
+    }
+
+    .bubble {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        background-color: rgba(255, 240, 192, 0.5);
+        border-radius: 50%;
+        opacity: 0;
+        animation: floatUp .5s forwards;
+    }
+
+    @keyframes floatUp {
+        0% {
+            bottom: 0;
+            opacity: 1;
+        }
+        100% {
+            bottom: 100%; /* Move to the top */
+            opacity: 0;
+        }
+    }
+}
+
+.full-size {
+    height: 100%;
+    width: 100%;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+}
+
+#content {
+    p {
+        color: black;
+        font-size: 1rem;
+        text-align: justify;
+    }
+}
+
+.team-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 30px;
+    color: #fff;
+    background-color: rgba(39, 161, 97, 0.9);
+    text-align: center;
+
+    h1, h2, h3 {
+        font-weight: 500;
+    }
+
+    & .team {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        max-width: 1200px;
+    }
+
+    & .team-member {
+        width: 300px;
+        margin: 20px;
+        text-align: center;
+
+
+        & h2, h3 {
+            margin: 0;
+        }
+
+        & h3 {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        & p {
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+    }
+}
+
+.site-footer {
+    background-color: #262626;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin: 0;
+    border: 0;
+
+    & p {
+        margin: 0.25rem;
+    }
+
+    & a {
+        color: #fff;
+        font-weight: 400;
+        text-decoration: underline;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.podium {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 75px;
+
+    .position {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        width: 240px;
+        text-align: center;
+        margin: 0 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 5px;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .first {
+        background-color: gold;
+        height: 250px;
+        animation-delay: 1s !important;
+
+        h2, h3 {
+            color: #56bef4;
+        }
+    }
+
+    .second {
+        background-color: silver;
+        height: 200px;
+        animation-delay: 0.5s !important;
+
+        h2, h3 {
+            color: #1f78b4;
+        }
+    }
+
+    .third {
+        background-color: #cd7f32;
+        color: #b2df8a;
+        height: 150px;
+
+        h2, h3 {
+            color: #b2df8a;
+        }
+    }
+
+    h2, h3 {
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    @keyframes grow {
+        from {
+            transform: scaleY(0);
+        }
+        to {
+            transform: scaleY(1);
+        }
+    }
+
+    .animate {
+        animation: grow 0.9s ease forwards;
+    }
+
+}

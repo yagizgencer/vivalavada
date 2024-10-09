@@ -1,0 +1,63 @@
+<label for="metrics-select">Select a metric:</label>
+<select id="metrics-select">
+    <option value="style_similarity_ratings">Ratings of beer styles</option>
+    <option value="style_similarity_popularity">Popularity of beer styles</option>
+    <option value="brewery_similarity_ratings">Ratings of brewery locations</option>
+    <option value="brewery_similarity_popularity">Popularity of brewery locations</option>
+</select>
+<label for="factor-select">Factor:</label>
+<select id="factor-select">
+    <option value="distance">Distance</option>
+    <option value="wealth">Wealth</option>
+</select>
+
+<div class="similarity-graph" id="style_similarity_ratings_distance">
+    {% include_relative data/html_graphs/style_similarity_ratings_grouped_distance.html %}
+</div>
+<div class="similarity-graph hidden" id="style_similarity_ratings_wealth">
+    {% include_relative data/html_graphs/style_similarity_ratings_grouped_wealth.html %}
+</div>
+<div class="similarity-graph hidden" id="style_similarity_popularity_distance">
+    {% include_relative data/html_graphs/style_similarity_popularity_grouped_distance.html %}
+</div>
+<div class="similarity-graph hidden" id="style_similarity_popularity_wealth" >
+    {% include_relative data/html_graphs/style_similarity_popularity_grouped_wealth.html %}
+</div>
+<div class="similarity-graph hidden" id="brewery_similarity_ratings_distance">
+    {% include_relative data/html_graphs/brewery_similarity_ratings_grouped_distance.html %}
+</div>
+<div class="similarity-graph hidden" id="brewery_similarity_ratings_wealth">
+    {% include_relative data/html_graphs/brewery_similarity_ratings_grouped_wealth.html %}
+</div>
+<div class="similarity-graph hidden" id="brewery_similarity_popularity_distance">
+    {% include_relative data/html_graphs/brewery_similarity_popularity_grouped_distance.html %}
+</div>
+<div class="similarity-graph hidden" id="brewery_similarity_popularity_wealth">
+    {% include_relative data/html_graphs/brewery_similarity_popularity_grouped_wealth.html %}
+</div>
+
+<script>
+    function updateGraphs() {
+        const metric = document.getElementById("metrics-select").value;
+        const factor = document.getElementById("factor-select").value;
+
+        // Hide all graphs initially
+        const allGraphs = document.querySelectorAll(".similarity-graph");
+        allGraphs.forEach(graph => graph.classList.add("hidden"));
+
+        // Construct the ID based on the metric and factor
+        const graphId = `${metric}_${factor}`;
+        const selectedGraph = document.getElementById(graphId);
+
+        // Show the selected graph
+        if (selectedGraph) {
+            selectedGraph.classList.remove("hidden");
+        }
+    }
+
+    document.getElementById("metrics-select").addEventListener("change", updateGraphs);
+    document.getElementById("factor-select").addEventListener("change", updateGraphs);
+
+    // Initial update
+    updateGraphs();
+</script>

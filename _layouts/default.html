@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    {% seo %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div id="progress-container"><div id="progress-bar"></div></div>
+
+    {% include header.html %}
+
+    <main id="content" class="main-content" role="main">
+      {{ content }}
+    </main>
+
+    {% include team.html %}
+
+    {% include footer.html %}
+
+    <!-- Scripts -->
+    <script type="module" src="{{ '/assets/js/main.js?v=' | append: site.github.build_revision | relative_url }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+  </body>
+</html>

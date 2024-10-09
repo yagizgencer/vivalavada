@@ -1,0 +1,11 @@
+location 1,location 2,mean similarity
+"United States, Illinois","United States, Ohio",5.303776653170162
+"United States, Massachusetts","United States, Virginia",5.211756094476384
+"United States, Massachusetts","United States, New York",5.1661065369534525
+"United States, Massachusetts","United States, North Carolina",5.1371813142092115
+"United States, New York","United States, Virginia",5.125898569975249
+"United States, Indiana","United States, Ohio",5.0442211872896054
+"United States, California","United States, Oregon",5.037347766941386
+"United States, California","United States, Florida",4.9610786803989795
+"United States, Georgia","United States, Virginia",4.927171439847917
+"United States, Connecticut","United States, Massachusetts",4.91500725617799

@@ -1,0 +1,11 @@
+<label for="trends-map-select">Select a metric:</label>
+<select id="trends-map-select">
+    <option value="ratings-style">Ratings of beer styles</option>
+    <option value="popularity-style">Popularity of beer styles</option>
+    <option value="ratings-brewery">Ratings of brewery locations</option>
+    <option value="popularity-brewery">Popularity of brewery locations</option>
+</select>
+<div id="trends-map"></div>
+<div><label id="map-year" for="map-year-slider" style="color:#000000;font-size:2rem;font-weight:bold;margin-right:25px;">2006</label><input id="map-year-slider" type="range" min="2006" max="2017" value="2006" step="1" /></div>
+<div id="map-tooltip" style="position: absolute; opacity: 0; pointer-events: none; background-color: white; border: 1px solid; padding: 5px;"></div>
+<script src="{{ '/assets/js/plots/trends-maps.js?v=' | append: site.github.build_revision | relative_url }}" type="module"></script>

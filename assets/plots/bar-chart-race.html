@@ -1,0 +1,10 @@
+<label for="bar-race-select">Select a metric:</label>
+<select id="bar-race-select">
+    <option value="ratings-style">Ratings of beer styles</option>
+    <option value="number-ratings-style">Popularity of beer styles</option>
+    <option value="ratings-brewery">Ratings of brewery locations</option>
+    <option value="number-ratings-brewery">Popularity of brewery locations</option>
+</select>
+<div id="bar-race"></div>
+<button id="bar-race-pause-button" style="margin-right:5px;">⏸️ Pause the race</button><button id="bar-race-restart-button">🏁 Restart the race</button>
+<script src="{{ '/assets/js/plots/bar-chart-race.js?v=' | append: site.github.build_revision | relative_url }}" type="module"></script>

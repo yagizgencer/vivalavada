@@ -1,0 +1,8 @@
+<label for="arrow-graph-select">Select a metric:</label>
+<select id="arrow-graph-select">
+    <option value="ratings-brewery">Ratings of brewery locations</option>
+    <option value="popularity-brewery">Popularity of brewery locations</option>
+</select>
+<div id="arrow-graph"></div>
+<div><label id="arrow-graph-year" for="arrow-graph-year-slider" style="color:#000000;font-size:2rem;font-weight:bold;margin-right:25px;">2006</label><input id="arrow-graph-year-slider" type="range" min="2006" max="2017" value="2006" step="1" /></div>
+<script src="{{ '/assets/js/plots/arrow-graph.js?v=' | append: site.github.build_revision | relative_url }}" type="module"></script>
