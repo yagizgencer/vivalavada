@@ -1,8 +1,13 @@
-# ada-2023-project-vivalavada
-ada-2023-project-vivalavada created by GitHub Classroom
-
 ## Cheers to Change: Exploring Temporal and Spatial Dynamics in Beer Trends
 
+## Contributors
+
+- [Yağız Gençer](https://github.com/yagizgencer)
+- [Tuğba Tümer](https://github.com/tugbatumer)
+- [Hadrien Sevel](https://github.com/hadriensevel)
+- [Rishi Sinha](https://github.com/rishisinhanj)
+- [Iris Toye](https://github.com/iris263)
+  
 ## Abstract 
 
 We propose in this study to analyze what are the beer trends by location, where do the trends originate, and how their evaluation and spreading over time reflects interconnection between countries. We shall make use of different ways to define a "beer trend" for a given location, such as the beer styles that are the most consumed, the beer styles with the highest ratings, the most popular beer producers (brewery or country), or the highest valued beer aspect (taste, aroma, etc.). Our motivation is to investigate whether countries that are close together, either geographically or socio-economically, have become more interconnected over time through the lens of beer and to discover the underlying factors playing a role in forming and shifting of beer trends.
