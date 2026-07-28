@@ -1,39 +1,52 @@
-<label for="metrics-select">Select a metric:</label>
-<select id="metrics-select">
-    <option value="style_similarity_ratings">Ratings of beer styles</option>
-    <option value="style_similarity_popularity">Popularity of beer styles</option>
-    <option value="brewery_similarity_ratings">Ratings of brewery locations</option>
-    <option value="brewery_similarity_popularity">Popularity of brewery locations</option>
-</select>
-<label for="factor-select">Factor:</label>
-<select id="factor-select">
-    <option value="distance">Distance</option>
-    <option value="wealth">Wealth</option>
-</select>
-
-<div class="similarity-graph" id="style_similarity_ratings_distance">
-    {% include_relative data/html_graphs/style_similarity_ratings_grouped_distance.html %}
-</div>
-<div class="similarity-graph hidden" id="style_similarity_ratings_wealth">
-    {% include_relative data/html_graphs/style_similarity_ratings_grouped_wealth.html %}
-</div>
-<div class="similarity-graph hidden" id="style_similarity_popularity_distance">
-    {% include_relative data/html_graphs/style_similarity_popularity_grouped_distance.html %}
-</div>
-<div class="similarity-graph hidden" id="style_similarity_popularity_wealth" >
-    {% include_relative data/html_graphs/style_similarity_popularity_grouped_wealth.html %}
-</div>
-<div class="similarity-graph hidden" id="brewery_similarity_ratings_distance">
-    {% include_relative data/html_graphs/brewery_similarity_ratings_grouped_distance.html %}
-</div>
-<div class="similarity-graph hidden" id="brewery_similarity_ratings_wealth">
-    {% include_relative data/html_graphs/brewery_similarity_ratings_grouped_wealth.html %}
-</div>
-<div class="similarity-graph hidden" id="brewery_similarity_popularity_distance">
-    {% include_relative data/html_graphs/brewery_similarity_popularity_grouped_distance.html %}
-</div>
-<div class="similarity-graph hidden" id="brewery_similarity_popularity_wealth">
-    {% include_relative data/html_graphs/brewery_similarity_popularity_grouped_wealth.html %}
+<div class="figure">
+    <div class="figure__controls">
+        <div class="control">
+            <label class="control__label" for="metrics-select">Metric</label>
+            <div class="select-wrap">
+                <select id="metrics-select">
+                    <option value="style_similarity_ratings">Ratings of beer styles</option>
+                    <option value="style_similarity_popularity">Popularity of beer styles</option>
+                    <option value="brewery_similarity_ratings">Ratings of brewery locations</option>
+                    <option value="brewery_similarity_popularity">Popularity of brewery locations</option>
+                </select>
+            </div>
+        </div>
+        <div class="control">
+            <label class="control__label" for="factor-select">Factor</label>
+            <div class="select-wrap">
+                <select id="factor-select">
+                    <option value="distance">Distance</option>
+                    <option value="wealth">Wealth</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="figure__body">
+        <div class="similarity-graph" id="style_similarity_ratings_distance">
+            {% include_relative data/html_graphs/style_similarity_ratings_grouped_distance.html %}
+        </div>
+        <div class="similarity-graph hidden" id="style_similarity_ratings_wealth">
+            {% include_relative data/html_graphs/style_similarity_ratings_grouped_wealth.html %}
+        </div>
+        <div class="similarity-graph hidden" id="style_similarity_popularity_distance">
+            {% include_relative data/html_graphs/style_similarity_popularity_grouped_distance.html %}
+        </div>
+        <div class="similarity-graph hidden" id="style_similarity_popularity_wealth" >
+            {% include_relative data/html_graphs/style_similarity_popularity_grouped_wealth.html %}
+        </div>
+        <div class="similarity-graph hidden" id="brewery_similarity_ratings_distance">
+            {% include_relative data/html_graphs/brewery_similarity_ratings_grouped_distance.html %}
+        </div>
+        <div class="similarity-graph hidden" id="brewery_similarity_ratings_wealth">
+            {% include_relative data/html_graphs/brewery_similarity_ratings_grouped_wealth.html %}
+        </div>
+        <div class="similarity-graph hidden" id="brewery_similarity_popularity_distance">
+            {% include_relative data/html_graphs/brewery_similarity_popularity_grouped_distance.html %}
+        </div>
+        <div class="similarity-graph hidden" id="brewery_similarity_popularity_wealth">
+            {% include_relative data/html_graphs/brewery_similarity_popularity_grouped_wealth.html %}
+        </div>
+    </div>
 </div>
 
 <script>
