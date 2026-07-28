@@ -25,7 +25,7 @@ title: Viva La VADA
 #  Google search results) and in your feed.xml site description.
 
 baseurl: "/vivalavada" # the subpath of your site, e.g. /blog
-url: "https://hadriensevel.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://yagizgencer.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 remote_theme: pages-themes/cayman@v0.2.0
