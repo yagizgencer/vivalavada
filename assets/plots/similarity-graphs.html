@@ -22,50 +22,52 @@
         </div>
     </div>
     <div class="figure__body">
-        <div class="similarity-graph" id="style_similarity_ratings_distance">
-            {% include_relative data/html_graphs/style_similarity_ratings_grouped_distance.html %}
-        </div>
-        <div class="similarity-graph hidden" id="style_similarity_ratings_wealth">
-            {% include_relative data/html_graphs/style_similarity_ratings_grouped_wealth.html %}
-        </div>
-        <div class="similarity-graph hidden" id="style_similarity_popularity_distance">
-            {% include_relative data/html_graphs/style_similarity_popularity_grouped_distance.html %}
-        </div>
-        <div class="similarity-graph hidden" id="style_similarity_popularity_wealth" >
-            {% include_relative data/html_graphs/style_similarity_popularity_grouped_wealth.html %}
-        </div>
-        <div class="similarity-graph hidden" id="brewery_similarity_ratings_distance">
-            {% include_relative data/html_graphs/brewery_similarity_ratings_grouped_distance.html %}
-        </div>
-        <div class="similarity-graph hidden" id="brewery_similarity_ratings_wealth">
-            {% include_relative data/html_graphs/brewery_similarity_ratings_grouped_wealth.html %}
-        </div>
-        <div class="similarity-graph hidden" id="brewery_similarity_popularity_distance">
-            {% include_relative data/html_graphs/brewery_similarity_popularity_grouped_distance.html %}
-        </div>
-        <div class="similarity-graph hidden" id="brewery_similarity_popularity_wealth">
-            {% include_relative data/html_graphs/brewery_similarity_popularity_grouped_wealth.html %}
+        <!-- All eight graphs are stacked in one grid cell so every one of them
+             is laid out at full width from the start. Hiding them with
+             display:none instead would make Plotly measure a zero-width
+             container and draw a collapsed chart. -->
+        <div class="similarity-stack">
+            <div class="similarity-graph" id="style_similarity_ratings_distance">
+                {% include_relative data/html_graphs/style_similarity_ratings_grouped_distance.html %}
+            </div>
+            <div class="similarity-graph is-inactive" id="style_similarity_ratings_wealth">
+                {% include_relative data/html_graphs/style_similarity_ratings_grouped_wealth.html %}
+            </div>
+            <div class="similarity-graph is-inactive" id="style_similarity_popularity_distance">
+                {% include_relative data/html_graphs/style_similarity_popularity_grouped_distance.html %}
+            </div>
+            <div class="similarity-graph is-inactive" id="style_similarity_popularity_wealth" >
+                {% include_relative data/html_graphs/style_similarity_popularity_grouped_wealth.html %}
+            </div>
+            <div class="similarity-graph is-inactive" id="brewery_similarity_ratings_distance">
+                {% include_relative data/html_graphs/brewery_similarity_ratings_grouped_distance.html %}
+            </div>
+            <div class="similarity-graph is-inactive" id="brewery_similarity_ratings_wealth">
+                {% include_relative data/html_graphs/brewery_similarity_ratings_grouped_wealth.html %}
+            </div>
+            <div class="similarity-graph is-inactive" id="brewery_similarity_popularity_distance">
+                {% include_relative data/html_graphs/brewery_similarity_popularity_grouped_distance.html %}
+            </div>
+            <div class="similarity-graph is-inactive" id="brewery_similarity_popularity_wealth">
+                {% include_relative data/html_graphs/brewery_similarity_popularity_grouped_wealth.html %}
+            </div>
         </div>
     </div>
 </div>
 
 <script>
+    // Switching is a pure visibility flip: every graph is already drawn at the
+    // right size, so there is no relayout and therefore no visible snap.
     function updateGraphs() {
         const metric = document.getElementById("metrics-select").value;
         const factor = document.getElementById("factor-select").value;
-
-        // Hide all graphs initially
-        const allGraphs = document.querySelectorAll(".similarity-graph");
-        allGraphs.forEach(graph => graph.classList.add("hidden"));
-
-        // Construct the ID based on the metric and factor
         const graphId = `${metric}_${factor}`;
-        const selectedGraph = document.getElementById(graphId);
 
-        // Show the selected graph
-        if (selectedGraph) {
-            selectedGraph.classList.remove("hidden");
-        }
+        document.querySelectorAll(".similarity-graph").forEach(graph => {
+            const inactive = graph.id !== graphId;
+            graph.classList.toggle("is-inactive", inactive);
+            graph.setAttribute("aria-hidden", String(inactive));
+        });
     }
 
     document.getElementById("metrics-select").addEventListener("change", updateGraphs);
@@ -73,4 +75,18 @@
 
     // Initial update
     updateGraphs();
+
+    // One-time sanity pass: if anything shifted the container width between
+    // Plotly drawing the graphs and the page finishing loading (web fonts, a
+    // scrollbar appearing), re-fit them all while they are still off-screen.
+    window.addEventListener("load", () => {
+        if (!window.Plotly) return;
+        document.querySelectorAll(".similarity-graph .plotly-graph-div").forEach(graph => {
+            try {
+                Plotly.Plots.resize(graph);
+            } catch (e) {
+                // Not initialised — leave it to Plotly's own responsive handler.
+            }
+        });
+    });
 </script>

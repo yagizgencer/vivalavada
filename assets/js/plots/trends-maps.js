@@ -48,13 +48,17 @@ async function createMap(metric, year= 2006) {
 
     const data = stylesRatingsPerYear[year];
 
-    // Specify the chart’s dimensions.
-    const width = 928;
+    // Specify the chart’s dimensions. The legend gets a reserved column on the
+    // left instead of being drawn over the map — the brewery-location labels
+    // ("Central and South America") are long enough to cover half of Europe.
+    const mapWidth = 928;
+    const legendWidth = 175;
+    const width = legendWidth + mapWidth;
     const marginTop = 50;
-    const height = width / 2 + marginTop;
+    const height = mapWidth / 2 + marginTop;
 
-    // Fit the projection.
-    const projection = d3.geoEqualEarth().fitExtent([[2, marginTop + 2], [width - 2, height]], {type: "Sphere"});
+    // Fit the projection into the area to the right of the legend column.
+    const projection = d3.geoEqualEarth().fitExtent([[legendWidth + 2, marginTop + 2], [width - 2, height]], {type: "Sphere"});
     const path = d3.geoPath(projection);
 
 
@@ -119,7 +123,7 @@ async function createMap(metric, year= 2006) {
 
     const legend = svg.append("g")
         .attr("id", "legend")
-        .attr("transform", "translate(20,20)"); // Adjust this to position your legend
+        .attr("transform", `translate(20,${marginTop})`);
 
     // Determine the height of each legend item
     const legendItemHeight = 20;

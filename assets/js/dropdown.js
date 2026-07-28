@@ -151,8 +151,10 @@ function enhance(select) {
         if (isOpen && !wrap.contains(event.target)) close(false);
     });
 
-    // Keep the label in step if anything changes the select programmatically
+    // Keep the label in step if anything changes the select programmatically.
+    // Both events are watched because callers may dispatch either one.
     select.addEventListener('change', syncTrigger);
+    select.addEventListener('input', syncTrigger);
 
     wrap.append(trigger, menu);
     wrap.classList.add('is-enhanced');

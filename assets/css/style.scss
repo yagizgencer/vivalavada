@@ -471,7 +471,7 @@ body {
        heading rather than as smaller-than-the-paragraph they introduce */
     > h4 {
         font-family: var(--font-text);
-        font-size: 1.02em;
+        font-size: 0.96em;
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -681,6 +681,24 @@ body {
 .figure__body {
     padding: 1.5rem;
     background: var(--surface);
+}
+
+/* Stack every variant in a single grid cell: they all keep a real, full-width
+   layout box, so Plotly sizes each one correctly on first draw. Toggling
+   visibility then swaps them with no relayout and no flash. The container
+   takes the height of the tallest, so nothing jumps between selections. */
+.similarity-stack {
+    display: grid;
+}
+
+.similarity-stack > .similarity-graph {
+    grid-area: 1 / 1;
+    min-width: 0;
+}
+
+.similarity-graph.is-inactive {
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .figure__body > div {
